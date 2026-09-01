@@ -203,3 +203,10 @@ def test_login_success_with_pom(page):
     login_page.goto()
     login_page.login("tomsmith", "SuperSecretPassword!")
     expect(login_page.flash_message).to_contain_text("You logged into a secure area!")
+
+def test_login_fail_with_pom(page):
+    login_page = LoginPage(page)
+    login_page.goto()
+    login_page.login("wrongname", "wrongpass")
+    text = login_page.get_flash_text()
+    assert "invalid" in text.lower()
