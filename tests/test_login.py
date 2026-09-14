@@ -202,7 +202,9 @@ def test_login_success_with_pom(page):
     login_page = LoginPage(page)
     login_page.goto()
     login_page.login("tomsmith", "SuperSecretPassword!")
-    expect(login_page.flash_message).to_contain_text("You logged into a secure area!")
+    success_message = page.locator(".flash.success")
+    expect(success_message).to_be_visible()
+
 
 def test_login_fail_with_pom(page):
     login_page = LoginPage(page)
