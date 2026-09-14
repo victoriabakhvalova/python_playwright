@@ -172,7 +172,7 @@ def test_iframe_editable(page):
 def test_login_succes(page):
     page.goto("https://the-internet.herokuapp.com/login")
     page.fill("#username", "tomsmith")
-    page.fill("password", "SuperSecretPassword!")
+    page.fill("#password", "SuperSecretPassword!")
     page.click("button[type='submit']")
     expect(page.locator(".flash.success")).to_be_visible()
 
